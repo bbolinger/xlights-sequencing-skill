@@ -1,0 +1,77 @@
+{
+  "//": "The per-song config. Authored by the owner's ear with the agent's proposal as the first draft. Times in seconds on disk; every report prints m:ss. Keys starting with // are comments.",
+  "song": "Example Song",
+  "media": "media/Example Song.mp3",
+  "source": "sections proposed from stems 2026-11-01, corrected by the owner by ear 2026-11-02",
+  "preset": "midtempo",
+  "preset_note": "the style dials, measured from the show's own finished sequences (effects/s ceiling, median duration, layer depth, effect mix) — never from an average of other people's files",
+  "driver": "onsets",
+  "start": 0.0,
+  "song_end": 212.4,
+  "fade_out": 2.0,
+  "instrumental": false,
+  "built_to": 61.2,
+  "//built_to": "the build frontier: everything below it is carried over untouched on the next run",
+  "whole_house_group": "ALL House",
+  "sections": [
+    {
+      "n": 1, "name": "Intro", "start": 0.0, "end": 14.8, "mmss": "0:00.0-0:14.8",
+      "intensity": 0.2,
+      "dark": false,
+      "why": "guitar alone; the owner: 'leave the house quiet until the band'",
+      "intent": {
+        "portion": "intro",
+        "music": "one guitar, no drums, a held chord every two bars",
+        "motif": "one slow wash on the roofline, the sign lit, nothing else",
+        "why": "the song has not started; quiet is still, not narrow",
+        "build": "the wash widens by one group per held chord"
+      }
+    },
+    {
+      "n": 2, "name": "Verse 1", "start": 14.8, "end": 46.1, "mmss": "0:14.8-0:46.1",
+      "intensity": 0.55,
+      "voice": "lead",
+      "why": "band in on the downbeat at 0:14.8 (kick 0.91)",
+      "intent": {
+        "portion": "verse 1",
+        "music": "kick and snare steady, bass walks, the lead sings two lines per four bars",
+        "motif": "kick → arches, snare → the roofline answers, the lead's face sings",
+        "why": "the verse introduces the instruments one by one; the house does the same",
+        "build": "arches alone for 8 bars, roofline joins on the second line"
+      }
+    },
+    {
+      "n": 3, "name": "Chorus 1", "start": 46.1, "end": 61.2, "mmss": "0:46.1-0:61.2",
+      "intensity": 0.9,
+      "why": "full band, the hook",
+      "intent": {
+        "portion": "chorus 1",
+        "music": "the hook, cymbals open, every stem up 6 dB",
+        "motif": "the whole-house punch on the first beat, then the chorus pattern (bars rolling up the house) — this motif repeats and GROWS in every chorus",
+        "why": "the chorus is the song's identity; it must be recognisable the second time",
+        "build": "chorus 2 adds the matrix, chorus 3 adds the trees"
+      }
+    }
+  ],
+  "approved": [
+    {"start": 0.0, "end": 46.1, "why": "the owner, 2026-11-02: 'first 46 approved, nice work' — judged on the saved render; snapshot analysis/Example Song.v3-APPROVED-0-46.xsq"}
+  ],
+  "stops": [
+    {"start": 60.9, "end": 61.2, "why": "the band stops dead before chorus 2: bass and drums at -58 dB in the stems. The house goes dark; the beds that cross it are split, not covered"}
+  ],
+  "casting": {
+    "lead": "Singing Pumpkin",
+    "answer": ["Left Face", "Right Face"],
+    "why": "one voice, one place: the lead sings from the centre prop; the backing lines answer from the sides. Who says what comes from the script, never from pitch"
+  },
+  "designs": {
+    "why": "the owner, 2026-09-19: 'do not all songs feel and look the same with the same effects' — every song picks its own patterns",
+    "roofline": "chase, two colours, alternating direction every bar",
+    "arches": "single bar rolling up, one per kick",
+    "power_effect": "the MegaTree's spiral on the section's biggest onset"
+  },
+  "tune_to": {
+    "element": "TUNE TO", "text": "87.9",
+    "why": "the owner: 'my station is 87.9, I leave it lit the whole time minus blackouts, fade in and out at the ends'"
+  }
+}

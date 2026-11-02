@@ -1,0 +1,25 @@
+{
+  "//": "Who sings from where. Looked up from the script, cast per LINE; pitch is a diagnostic, never the source. One speaker, one voice, one timing track. Made-up content.",
+  "source": "script from the film's published screenplay; lines checked by the owner by ear 2026-11-02",
+  "voices": {
+    "lead":  {"prop": "Singing Pumpkin", "track": "Lead Vocal",  "face": "Pumpkin Face", "lit_all_song": true},
+    "left":  {"prop": "Left Face",       "track": "Backing L",   "face": "Face L",        "lit_all_song": false},
+    "right": {"prop": "Right Face",      "track": "Backing R",   "face": "Face R",        "lit_all_song": false}
+  },
+  "//lit_all_song": "a dedicated singing prop stays lit all song (idle = a fixed closed mouth between lines); a face on a multiprop stays windowed to its lines",
+  "characters": {
+    "Narrator": "lead",
+    "Chorus":   ["left", "right"],
+    "//Chorus": "a group line is sung by every named character on its OWN track — never a collective bucket"
+  },
+  "lines": [
+    {"n": 1, "start": 14.8, "end": 18.2, "character": "Narrator", "text": "<first line of the lyric sheet>", "verified": true, "broken_down": true},
+    {"n": 2, "start": 18.6, "end": 22.0, "character": "Chorus",   "text": "<the backing answer>",           "verified": true, "broken_down": true,
+     "recovered": true, "//recovered": "found under the lead by spectral contrast; the transcript absorbed it. Lives here, never back in the transcript"}
+  ],
+  "//verified": "every word's pronunciation checked (a dictionary, never letters) and every 2+ syllable word broken into 2+ mouth shapes — the validator refuses otherwise",
+  "hand_edited": false,
+  "//hand_edited": "true once the owner has edited these tracks in xLights: then the chain REFUSES to rebuild them and the only legal direction is reading the tracks back from the .xsq",
+  "blink": {"every_s": [4.5, 5.5], "ms": 125, "preclose_ms": 125},
+  "//blink": "xLights' Auto never blinks a node-range face; blinks are PLACED, and every line entry pre-closes the mouth"
+}
