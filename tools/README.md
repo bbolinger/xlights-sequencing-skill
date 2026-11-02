@@ -25,4 +25,4 @@ print as `m:ss`, never raw seconds. Run from anywhere; each tool puts its own fo
   Not running: the tool says so, exit 1.
 
 Rules encoded: readers scope to `<ElementEffects>`; byte index = absolute channel − 1; one render at a
-time, save before close; no check skips quietly — each says `ok`, `WARN`, `FAIL`, `n/a` or `DID NOT RUN`.
+time, save before close; no check skips quietly: each says `ok`, `WARN`, `FAIL`, `n/a` or `DID NOT RUN`.

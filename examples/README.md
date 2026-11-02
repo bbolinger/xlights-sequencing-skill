@@ -1,4 +1,4 @@
-# Examples — the shape of the per-song config
+# Examples: the shape of the per-song config
 
 These are the files the method keeps beside each song in `<song>/analysis/`. The content is made up; the **fields** are
 the real ones. Keys beginning with `//` are comments and are ignored by every tool.

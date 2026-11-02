@@ -779,7 +779,7 @@ def main():
                     print(f"        LOOK: {word!r:>12} {vis:<3} {mmss(s/1000)}-{mmss(e/1000)}  "
                           f"centroid {c:5.0f} Hz reads {'HIGH (ay/ee)' if c >= split else 'LOW (oh/oo)'}")
             # ---- check 12: VOICE WITH NO MOUTH.
-            # The owner 2026-09-18: *do they hold the "go" from 24.8 to 27.8 — how was that missed?*.
+            # The owner 2026-09-18: *do they hold the "go" from 24.8 to 27.8, how was that missed?*.
             # Whisper dropped "home"; the transcript ended at 25.70 and the vocals stem was
             # still singing an "oh" to 27.7 with every face closed. Check 11 can only score
             # visemes that EXIST; this finds singing that has none. Scan the vocals stem for

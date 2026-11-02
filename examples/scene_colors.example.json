@@ -1,10 +1,10 @@
 {
   "//": "Colour comes from the song's own scene: the film's frames per section, clustered by hue. Hue is kept; saturation and value are translated for LEDs by the placer (deep for a bed, full for an accent). White is always allowed. Made-up content.",
-  "source": "AUTHORED BY HAND from the film, 2026-11-01 — no video file was available; values are FILM-FRAME values (dark, desaturated) so the LED translation applies as if sampled. NO near-black entry: a neutral makes every palette admissible.",
+  "source": "AUTHORED BY HAND from the film, 2026-11-01, because no video file was available; values are FILM-FRAME values (dark, desaturated) so the LED translation applies as if sampled. NO near-black entry: a neutral makes every palette admissible.",
   "sections": [
     {"name": "Intro",    "colors": ["#2a1b3d", "#6b4f1d"], "roles": ["bed", "accent"], "why": "the opening: night blue over a sodium-lamp street"},
     {"name": "Verse 1",  "colors": ["#1f3a2e", "#8a2b1f"], "roles": ["bed", "hero"],   "why": "the forest scene; red is the character's coat"},
     {"name": "Chorus 1", "colors": ["#8a2b1f", "#c48a1a", "#ffffff"], "roles": ["bed", "hero", "neutral"], "why": "the hall: red walls, gold light, white candles"}
   ],
-  "//gradients": "a gradient between two saturated colours far apart in hue passes through a colour nobody chose — red→green is olive, yellow→blue is grey. validate.py check 17 lists every such curve with its lit seconds; blend toward a neighbour of the colour's own family instead"
+  "//gradients": "a gradient between two saturated colours far apart in hue passes through a colour nobody chose: red→green is olive, yellow→blue is grey. validate.py check 17 lists every such curve with its lit seconds; blend toward a neighbour of the colour's own family instead"
 }
