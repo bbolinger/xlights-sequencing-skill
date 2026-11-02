@@ -15,7 +15,9 @@ owner's edits, or a show that played dark. Read `reference/loop.md` before your 
 in it, in the session doing the work. `reference/xsq-format.md` is the file format as it actually behaves.
 
 **What ships here is the method and the checking tools** (`tools/`: `validate.py` with 21 refusing checks, `measure.py`,
-`xl.py` for the xLights API, `fseq.py` + `layout.py` + `snap.py` to read a render, `effects_diff.py`, `tc.py`). The
+`xl.py` for the xLights API, `fseq.py` + `layout.py` + `snap.py` to read a render, `housesnap.py` / `yardvideo.py` /
+`houseread.py` / `radius.py` / `litaudit.py` to read the whole yard (`reference/reading-renders.md`), `profile.py` to profile
+the owner's file per row (section 1, step 6), `marktrack.py` for a timing track in both lists, `effects_diff.py`, `tc.py`). The
 composer that placed effects on the show we learned this on, the forced-alignment / singing-face chain and the
 prop-specific tools are **not** in this release: they are entangled with one house. You bring your own placer (a script
 per song, xLights' own effects placed by hand, anything) and this method tells you how to check it, how to work with the
@@ -57,7 +59,7 @@ report per window in m:ss.
 5. Record the **row order** of the show's finished `.xsq` and audit it once: a prop whose own effects must show over a
    group bed sits *below* the group (a later row paints over an earlier one). Inside one element the opposite holds:
    **layer 0 is on top**.
-6. **Profile the show's file per ROW and per SETTING** (`reference/rules.md#knowledge`): for every prop, which effects they
+6. **Profile the show's file per ROW and per SETTING** (`tools/profile.py`; `reference/rules.md#knowledge`): for every prop, which effects they
    put on it, with which keys and values, how long, how bright, in which colours. That vocabulary is the only legal source
    of placements. Then **calibrate the dials** from their finished sequences, weighted by use, excluding anything
    generated: effects/s per 10 s window, median duration, % under 500 ms, % over 2 s, onset-lock, elements lit, layer
@@ -166,3 +168,27 @@ normalises strings and re-indexes the palette and effect tables.
 | Generic (ship as-is) | Per song (re-derive) | Per house [SPECIFIC] |
 |---|---|---|
 | intent before placement; knowledge before numbers; density is a property of the section; windows grow out of each other; two darknesses; identity per section; restraint; weight continuous, stems route; script over inference; keys not values; eyes ride the body; layer 0 on top inside an element; rows paint later-over-earlier; a buffer is its wiring; every check that matters refuses the file | sections, intensity, preset, palettes, script and casting, stops, effect patterns, punch thresholds, the owner's words | prop names, submodel maps, a multiprop's overlap matrix, group expansions, channel bases, GPU and render behaviour, the show's measured dials |
+
+### Per song: what is re-derived, where it lives, and from what
+
+The rules, and the method behind the measured ones, are carried whole. These are recomputed for every song:
+
+| Thing | Where it lives | How to get it |
+|---|---|---|
+| Section map: start, end, fade | `analysis/sections.json` | the owner's ear; the analysis proposes, each start snaps to the first real event |
+| Preset and its dials | `sections.json` → `preset` | measure a reference sequence of that style; only three things are invariant (§1, step 6) |
+| Palettes | `analysis/scene_colors.json` | the source video's own frames, per section, hue kept and value translated |
+| Who sings what | `analysis/script.json` | look it up; pitch is a diagnostic, never a source; a transcript absorbs an overlapping singer |
+| Stops | `sections.json` → `stops` | measured from the stems, not the mix |
+| Punch thresholds | the absolute floor and the two gates (§3, step 3) | re-check per song: the floor was tuned on data that was later corrected |
+| Syllable timing | `sections.json` → `syllables_from_audio` | the vocals stem's dips; then check where the mouth is out of step |
+| Face life | `sections.json` → `lit_faces.preclose_ms`, `lit_faces.blink` | 125 ms pre-close; a blink every 4.5-5.5 s, 125 ms (the owner, 2026-10-15); a face type xLights cannot auto-blink needs placed blinks |
+
+### Handing a sequence to another agent
+
+Give it this skill, the `.xsq` and the show's `xlights_rgbeffects.xml` (the last so group names can actually be expanded),
+and ask it to **review**, not to rebuild: reviewing tests whether the rules transmit judgement; rebuilding mostly tests
+whether it has the tooling, which it will not. Treat what comes back as a list of things to go look at, not as findings.
+The standing rule outranks it: what the owner sees on screen beats any tool, any measurement and any second opinion.
+Several of this project's worst errors (flames along the roofline, eyes written into the view list, a decoder off by one
+channel) would have read as perfectly plausible in a written critique.

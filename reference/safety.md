@@ -18,6 +18,9 @@ fine"*). `Shader` effects are the one type with no CPU implementation, so GPU-of
 The residual risk is a preferences reset turning GPU rendering back on: a sequence carrying Fires will then freeze the
 machine again. `validate.py` check 0 counts the Fires as **info** so you know the file is armed.
 
+On macOS the flag xLights reads lives in `~/Library/Containers/org.xlights/Data/Library/Application Support/xLights/` as
+`settings.json` → `"xLightsGPURendering"` (its start-up log names the file); the old `xLights Preferences` file can disagree.
+
 Hand-check: `grep -c 'name="Fire"' <xsq>` (scoped to `<ElementEffects>`, §5), and ask the owner whether GPU rendering is off.
 
 ## 2. ONE render at a time; nothing touches the sequence while it is in flight
@@ -30,6 +33,8 @@ inside 90 s (4 GPU resets in 80 s, 2026-09-02), and a cold headless `xLights -r`
 - `reload` (= close + open + renderAll) is never exposed; neither is `checkSequence` (`validate.py` covers it).
 - Headless `-r` is a last resort with xLights closed, GPU rendering off, once, with the owner watching. It launches a
   second instance and can migrate the show folder format.
+- The render cache is keyed `Effect_Element_layer_starttime`, so a file a tool has just regenerated misses almost everywhere
+  and the whole sequence is queued in one burst: a COLD cache is the worst case for queue depth. Prefer a warm one.
 - **A render writes no `.fseq`; a save does.** Since xLights 2026.17 the API can save (`saveSequence`). The loop is
   `open → render → save`, serial, nothing between. **Wait until the `.fseq` stops growing (2 s stable) before reading it**:
   a read during the save sees a black show.
@@ -46,6 +51,8 @@ writes out every model that layout lacks, silently. `xl.py` asks `getShowFolder`
 
 - A close discards them. **Save before close.** A chain that rewrites a file xLights has open must save first, then close,
   then write, then open. Autosave is not the hazard: it writes `<sequence>.xbkp` beside the file and *"No render created"*.
+  It fires every 3 minutes by default (`AutoSaveInterval`) and *skips* when nothing changed since the last save, while
+  playing, while suspended and during a batch render; a file written while xLights was closed never trips it at all.
   When the owner's work is missing, look in the `.xbkp`. `xl.py close` refuses while the `.xbkp` is newer than the `.xsq`.
 - **The owner's hand edits outrank every tool.** Diff the saved file against **your last write** (never against a copy
   taken after their save) with `effects_diff.py`, and carry what they changed. A tool that regenerates a track the owner has
@@ -114,6 +121,7 @@ StrandsPerString`); one row means `Per Model Per Preview` + 2D. An irregular mul
 - Sample **strictly inside** a span and take the peak over the span; a boundary frame holds the neighbour's last frame.
 - **Count lit pixels on EXCLUSIVE nodes; never `max()` over overlapping submodels.**
 - Confirm the channel mapping on a frame you can predict before trusting any reading.
+- **Export House Preview Video defaults to the FILM's path**: retype the output path every time.
 
 ## 11. Audio and lyrics
 
@@ -125,4 +133,5 @@ StrandsPerString`); one row means `Per Model Per Preview` + 2D. An irregular mul
 
 - Keep tools in one folder and analysis beside the song; a scratch directory is wiped.
 - Never install into the analysis venv from a research session.
+- Installed and latest are two different questions: the app's `Info.plist` vs the GitHub releases page; numbering is year.week.
 - A check that quietly skips is worse than no check: **`DID NOT RUN` is a failure. Fix it first.**

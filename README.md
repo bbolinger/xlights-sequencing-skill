@@ -20,7 +20,8 @@ broken four more times the same night by the agent that wrote it.
 | `reference/rules.md` | the design rules: statement, scope, evidence, enforcement, hand-check |
 | `reference/loop.md` | how to work with the owner: one decision per card, their eye outranks every count |
 | `reference/xsq-format.md` | the `.xsq` and `.fseq` as they actually behave |
-| `tools/` | `validate.py` (21 checks that refuse a bad file), `measure.py`, `xl.py` (the API driver with its locks and guards), `fseq.py` + `layout.py` + `snap.py` (read a render, draw a prop), `effects_diff.py`, `tc.py` |
+| `reference/reading-renders.md` | the saved render as the whole yard: which tool answers which question |
+| `tools/` | `validate.py` (21 checks that refuse a bad file), `measure.py`, `xl.py` (the API driver with its locks and guards), `fseq.py` + `layout.py` + `snap.py` (read a render, draw a prop), `housesnap.py` + `yardvideo.py` + `houseread.py` + `radius.py` + `litaudit.py` (the whole yard from a render: a still, a video, colour per bar, direction, lit share), `profile.py` (the owner's finished sequence profiled per row and per setting), `marktrack.py` (a timing track into both element lists), `effects_diff.py`, `tc.py` |
 | `examples/` | the shape of the per-song config (`sections.json`, `casting.json`, `scene_colors.json`) with made-up content |
 
 ## What's not here, on purpose

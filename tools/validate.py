@@ -238,7 +238,7 @@ def main():
             elif lay.tag == "SubModelEffectLayer": key = f"{el.get('name')}/{lay.get('name')}"
             else: continue
             if buffer_for(key) is None: continue          # house elements may sweep: that is the point
-            # HIS OWN FILES USE PER-PREVIEW ON A CHARACTER, AND HIS FILE IS THE AUTHORITY.
+            # THE OWNER'S OWN FILES USE PER-PREVIEW ON A CHARACTER, AND THAT FILE IS THE AUTHORITY.
             # The fault this check was written for is a per-preview effect across the concentric
             # RINGS, where one arc crosses all eleven and lights ~8% of each ("all the sub models
             # light up", 09-03). A single character submodel -- Spider, Bat Wings Flying, Blob or
