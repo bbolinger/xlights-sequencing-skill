@@ -14,7 +14,7 @@ owner's edits, or a show that played dark. Read `reference/loop.md` before your 
 `reference/rules.md` holds the design rules with a hand-check each; read the entry for an area before placing anything
 in it, in the session doing the work. `reference/xsq-format.md` is the file format as it actually behaves.
 
-**What ships here is the method and the checking tools** (`tools/`: `validate.py` with 17 refusing checks, `measure.py`,
+**What ships here is the method and the checking tools** (`tools/`: `validate.py` with 21 refusing checks, `measure.py`,
 `xl.py` for the xLights API, `fseq.py` + `layout.py` + `snap.py` to read a render, `effects_diff.py`, `tc.py`). The
 composer that placed effects on the show we learned this on, the forced-alignment / singing-face chain and the
 prop-specific tools are **not** in this release: they are entangled with one house. You bring your own placer (a script

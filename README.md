@@ -6,9 +6,9 @@ measure, render and save through xLights' automation API, prove the result in th
 at a time until the owner approves.
 
 It is the method and the checking tools we arrived at over one Halloween season on one house, people and agents
-working together: 13 songs on a 44-model display with singing props and a 94k-channel matrix, each approved on a saved
+working together: 13 songs on a 53-model display with singing props and a 94k-channel matrix, each approved on a saved
 render and played every night of the run. The rules in `reference/rules.md` each carry the evidence they came from and
-a hand-check; 15 of the 23 are enforced by code because documentation alone failed us: a rule written one evening was
+a hand-check; 15 of the 23 are enforced by code in the toolkit it was learned with, because documentation alone failed us: a rule written one evening was
 broken four more times the same night by the agent that wrote it.
 
 ## What's here
@@ -20,7 +20,7 @@ broken four more times the same night by the agent that wrote it.
 | `reference/rules.md` | the design rules: statement, scope, evidence, enforcement, hand-check |
 | `reference/loop.md` | how to work with the owner: one decision per card, their eye outranks every count |
 | `reference/xsq-format.md` | the `.xsq` and `.fseq` as they actually behave |
-| `tools/` | `validate.py` (17 checks that refuse a bad file), `measure.py`, `xl.py` (the API driver with its locks and guards), `fseq.py` + `layout.py` + `snap.py` (read a render, draw a prop), `effects_diff.py`, `tc.py` |
+| `tools/` | `validate.py` (21 checks that refuse a bad file), `measure.py`, `xl.py` (the API driver with its locks and guards), `fseq.py` + `layout.py` + `snap.py` (read a render, draw a prop), `effects_diff.py`, `tc.py` |
 | `examples/` | the shape of the per-song config (`sections.json`, `casting.json`, `scene_colors.json`) with made-up content |
 
 ## What's not here, on purpose
