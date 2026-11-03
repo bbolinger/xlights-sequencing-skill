@@ -133,8 +133,8 @@ def close(quiet=True, discard=False):
     # sequence holds unsaved changes, so an autosave NEWER than the saved .xsq means edits a close would throw away.
     if not discard:
         seq = Path(call({"cmd": "getOpenSequence"}).get("fullseq") or "")
-        bk = seq.with_suffix(".xbkp")
-        if seq.name and seq.exists() and bk.exists() and bk.stat().st_mtime > seq.stat().st_mtime + 1:
+        bk = seq.with_suffix(".xbkp") if seq.name else None     # nothing open -> Path('.') -> with_suffix raises
+        if bk is not None and seq.exists() and bk.exists() and bk.stat().st_mtime > seq.stat().st_mtime + 1:
             import time as _t
             hm = lambda p: _t.strftime("%H:%M:%S", _t.localtime(p.stat().st_mtime))
             raise SystemExit(f"REFUSING close: {bk.name} (autosave {hm(bk)}) is newer than the saved {seq.name} ({hm(seq)}) -- "
